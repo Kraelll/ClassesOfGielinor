@@ -11,12 +11,19 @@ public interface ClassesOfGielinorConfig extends Config
 	//Config Variables
 	enum ClassListEnum{
 		None,
+		Barbarian,
+		Bard,
 		Chef,
 		Cleric,
+		Druid,
+		Fighter,
 		Lumberjack,
+		Monk,
 		Necromancer,
 		Paladin,
 		Ranger,
+		Rogue,
+		Warlock,
 		Wizard
 	}
 	@ConfigItem(

@@ -1,6 +1,8 @@
 package com.ClassesOfGielinor;
 
 /*
+Version 1.1.0 - Build 210628-2
+
 Before anything else, I must say that a lot of this project would not have been possible without the help and insightful
 programming notes/documentation of many other contributors in various plugins. The RuneLite community is filled with very
 talented people, and I am very grateful for their documentation and clear code which allowed me to learn how to program this
@@ -52,6 +54,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	/* Array Structure:
 		[x][0] - x will always be a class ID, and [0] will always be the class' string name for easy identification
 		[x]][1..n] - n will be an entry in to the array for items names, and will go from 1-n
+		Each class will have 20 available "valid item" slots which can be cahnged in the code.
 	 */
 
 	@Inject
@@ -141,10 +144,14 @@ public class ClassesOfGielinorPlugin extends Plugin
 			default:
 				spellCaster = true;
 				disableNonClassItems = false;
+				prayerAllowed = true;
 				setAllowedItems(config.playerClass().toString());
 				break;
+
+			case Bard:
 			case Cleric:
-			case Wizard: {
+			case Druid:
+			case Warlock: {
 				spellCaster = true;
 				disableNonClassItems = true;
 				prayerAllowed = true;
@@ -152,14 +159,18 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 			}
 
-			case Necromancer:{
+			case Necromancer:
+			case Wizard:{
 				spellCaster = true;
 				disableNonClassItems = true;
 				prayerAllowed = false;
 				setAllowedItems(config.playerClass().toString());
 				break;
 			}
+
+			case Barbarian:
 			case Chef:
+			case Fighter:
 			case Lumberjack:
 			case Ranger: {
 				spellCaster = false;
@@ -169,7 +180,9 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 			}
 
-			case Paladin: {
+			case Monk:
+			case Paladin:
+			case Rogue:{
 				spellCaster = false;
 				disableNonClassItems = true;
 				prayerAllowed = true;
@@ -390,6 +403,33 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][8] = "bludgeon";
 				validClassItems[classID][9] = "banner";
 				validClassItems[classID][10] = "mjolnir";
+				validClassItems[classID][11] = "blessing";
+				validClassItems[classID][12] = " sword";
+				validClassItems[classID][13] = " longsword";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Barbarian": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "axe";
+				validClassItems[classID][2] = "thrownaxe";
+				validClassItems[classID][3] = "great";
+				validClassItems[classID][4] = "hammer";
+				validClassItems[classID][5] = "spear";
+				validClassItems[classID][6] = "javelin";
+				validClassItems[classID][7] = "club";
+				validClassItems[classID][8] = "maul";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -403,6 +443,167 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 			}
 
+			case "Bard": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "rapier";
+				validClassItems[classID][2] = "dagger";
+				validClassItems[classID][3] = "scimitar";
+				validClassItems[classID][4] = "lyre";
+				validClassItems[classID][5] = "----";
+				validClassItems[classID][6] = "----";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Druid": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "secateurs";
+				validClassItems[classID][2] = "staff";
+				validClassItems[classID][3] = "Guthix";
+				validClassItems[classID][4] = "sickle";
+				validClassItems[classID][5] = "----";
+				validClassItems[classID][6] = "----";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Fighter": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "longsword";
+				validClassItems[classID][2] = "2h";
+				validClassItems[classID][3] = "axe";
+				validClassItems[classID][4] = "hammer";
+				validClassItems[classID][5] = "scimitar";
+				validClassItems[classID][6] = "rapier";
+				validClassItems[classID][7] = "battle";
+				validClassItems[classID][8] = "mace";
+				validClassItems[classID][9] = "dagger";
+				validClassItems[classID][10] = " sword";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Monk": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "claws";
+				validClassItems[classID][2] = "whip";
+				validClassItems[classID][3] = "sickle";
+				validClassItems[classID][4] = "Battlestaff";
+				validClassItems[classID][5] = "holy water";
+				validClassItems[classID][6] = "blessing";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Rogue": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "dagger";
+				validClassItems[classID][2] = "dart";
+				validClassItems[classID][3] = "knife";
+				validClassItems[classID][4] = "crossbow";
+				validClassItems[classID][5] = "bolt";
+				validClassItems[classID][6] = "blackjack";
+				validClassItems[classID][7] = "rapier";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Warlock": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "staff";
+				validClassItems[classID][2] = "wand";
+				validClassItems[classID][3] = "blessing";
+				validClassItems[classID][4] = "----";
+				validClassItems[classID][5] = "----";
+				validClassItems[classID][6] = "----";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
 		}
 		return;
 	}
@@ -438,6 +639,27 @@ public class ClassesOfGielinorPlugin extends Plugin
 			case "Paladin":
 				classID = 7;
 				break;
+			case "Barbarian":
+				classID = 8;
+				break;
+			case "Bard":
+				classID = 9;
+				break;
+			case "Druid":
+				classID = 10;
+				break;
+			case "Fighter":
+				classID = 11;
+				break;
+			case "Monk":
+				classID = 12;
+				break;
+			case "Rogue":
+				classID = 13;
+				break;
+			case "Warlock":
+				classID = 14;
+				break;
 		}
 		return classID;
 	}
@@ -457,7 +679,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 			for(i = 1; i < validClassItems.length; i++)
 			{
 				ArrayItem = validClassItems[classID][i].toUpperCase();
-				if(currentItem.contains(ArrayItem))
+				if(currentItem.contains(ArrayItem) || ArrayItem == "!ALL!")
 				{
 					itemAllowed = 1;
 				}
@@ -681,14 +903,14 @@ public class ClassesOfGielinorPlugin extends Plugin
 		if ((entryMatches(event,"Wield"))) {
 			String itemName = getCurrentItemName(event);
 
-			if(getAllowedItems(itemName) == 1)
+			if(getAllowedItems(itemName) == 1 || config.enableNonClassItems()==true)
 			{
 				//Do nothing, item is allowed
 			}
 			else{
 				//Consume the click as they cannot use that item
 				event.consume();
-				String msgStr = "As a " + config.playerClass().toString() + " you cannot wield the " + itemName;
+				String msgStr = "As a " + config.playerClass().toString() + " you cannot wield the " + itemName + ".";
 				sendChatMessage(msgStr);
 			}
 			return;
