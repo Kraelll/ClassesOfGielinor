@@ -1,8 +1,6 @@
 package com.ClassesOfGielinor;
 
 /*
-Version 1.1.1 - Build 210629-1
-
 Before anything else, I must say that a lot of this project would not have been possible without the help and insightful
 programming notes/documentation of many other contributors in various plugins. The RuneLite community is filled with very
 talented people, and I am very grateful for their documentation and clear code which allowed me to learn how to program this
@@ -268,7 +266,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][7] = "banner";
 				validClassItems[classID][8] = "halberd";
 				validClassItems[classID][9] = "godsword";
-				validClassItems[classID][10] = "----";
+				validClassItems[classID][10] = "shield";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -406,7 +404,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][11] = "blessing";
 				validClassItems[classID][12] = " sword";
 				validClassItems[classID][13] = " longsword";
-				validClassItems[classID][14] = "----";
+				validClassItems[classID][14] = "shield";
 				validClassItems[classID][15] = "----";
 				validClassItems[classID][16] = "----";
 				validClassItems[classID][17] = "----";
@@ -511,7 +509,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][8] = "mace";
 				validClassItems[classID][9] = "dagger";
 				validClassItems[classID][10] = " sword";
-				validClassItems[classID][11] = "----";
+				validClassItems[classID][11] = "shield";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
 				validClassItems[classID][14] = "----";
@@ -534,7 +532,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][4] = "Battlestaff";
 				validClassItems[classID][5] = "holy water";
 				validClassItems[classID][6] = "blessing";
-				validClassItems[classID][7] = "----";
+				validClassItems[classID][7] = "shield";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";

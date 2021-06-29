@@ -24,7 +24,8 @@ dependencies {
 }
 
 group = 'com.ClassesOfGielinor'
-version = '1.1.1'
+version = '1.1.2'
+//build = '210629-2'
 sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
