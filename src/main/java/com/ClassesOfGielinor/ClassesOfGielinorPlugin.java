@@ -1,7 +1,7 @@
 package com.ClassesOfGielinor;
 
 /*
-Version 1.1.0 - Build 210628-2
+Version 1.1.1 - Build 210629-1
 
 Before anything else, I must say that a lot of this project would not have been possible without the help and insightful
 programming notes/documentation of many other contributors in various plugins. The RuneLite community is filled with very
@@ -47,6 +47,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	public boolean spellCaster = false;
 	public boolean disableNonClassItems = false;
 	public boolean prayerAllowed = false;
+	public int PrevClass = 0;
 
 	//Arrays
 	public String[][] validClassItems = new String[21][21];
@@ -86,7 +87,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
-			getClassRestrictions();
+			getClassRestrictions(config.playerClass().toString());
 			setAllowedItems(config.playerClass().toString());
 			setClassPermanentItems(config.playerClass().toString());
 			return;
@@ -96,51 +97,50 @@ public class ClassesOfGielinorPlugin extends Plugin
 	@Subscribe
 	private void onConfigChanged(ConfigChanged event)
 	{
-		getClassRestrictions();
-		setAllowedItems(config.playerClass().toString());
-		setClassPermanentItems(config.playerClass().toString());
-
 		String currentClass = config.playerClass().toString();
+
+		getClassRestrictions(currentClass);
+		setAllowedItems(currentClass);
+		setClassPermanentItems(currentClass);
+
 		String msgStr = "";
 
-		if (currentClass == "None") {
-			msgStr = "You do not have a class set.";
-		}
-		else{
-			msgStr = "Your class has been set to " + currentClass + ".";
-		}
-		sendChatMessage(msgStr);
-
-		if(spellCaster == true || config.classIsSpellcaster() == true)
+		if (PrevClass != getClassID(currentClass))  		//This prevents the updater spamming the chat.
 		{
-			msgStr = "You feel magical energies empower you.";
-		}
-		else{
-			msgStr = "";
-		}
-
-		if (msgStr == "")
-		{
-			//Do not broadcast
-		}
-		else{
+			if (currentClass == "None") {
+				msgStr = "You do not have a class set.";
+			} else {
+				msgStr = "Your class has been set to " + currentClass + ".";
+				PrevClass = getClassID(config.playerClass().toString());
+			}
 			sendChatMessage(msgStr);
-		}
 
-		if(prayerAllowed == true || config.forceAllowPrayer() == true)
-		{
-			sendChatMessage("The blessing of the Gods is with you.");
-		}
+			if (spellCaster || config.classIsSpellcaster()) {
+				msgStr = "You feel magical energies empower you.";
+			} else {
+				msgStr = "";
+			}
 
- 		return;
+			if (msgStr == "") {
+				//Do not broadcast
+			} else {
+				sendChatMessage(msgStr);
+			}
+
+			if (prayerAllowed || config.forceAllowPrayer()) {
+				sendChatMessage("The blessing of the Gods is with you.");
+			}
+
+			return;
+		}
 	}
 
 
-	private void getClassRestrictions()
+	private void getClassRestrictions(String PlayerClass)
 	{
-		switch(config.playerClass())
+		switch(PlayerClass)
 		{
-			case None:
+			case "None":
 			default:
 				spellCaster = true;
 				disableNonClassItems = false;
@@ -148,10 +148,10 @@ public class ClassesOfGielinorPlugin extends Plugin
 				setAllowedItems(config.playerClass().toString());
 				break;
 
-			case Bard:
-			case Cleric:
-			case Druid:
-			case Warlock: {
+			case "Bard":
+			case "Cleric":
+			case "Druid":
+			case "Warlock": {
 				spellCaster = true;
 				disableNonClassItems = true;
 				prayerAllowed = true;
@@ -159,8 +159,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 			}
 
-			case Necromancer:
-			case Wizard:{
+			case "Necromancer":
+			case "Wizard":{
 				spellCaster = true;
 				disableNonClassItems = true;
 				prayerAllowed = false;
@@ -168,11 +168,11 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 			}
 
-			case Barbarian:
-			case Chef:
-			case Fighter:
-			case Lumberjack:
-			case Ranger: {
+			case "Barbarian":
+			case "Chef":
+			case "Fighter":
+			case "Lumberjack":
+			case "Ranger": {
 				spellCaster = false;
 				disableNonClassItems = true;
 				prayerAllowed = false;
@@ -180,9 +180,9 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 			}
 
-			case Monk:
-			case Paladin:
-			case Rogue:{
+			case "Monk":
+			case "Paladin":
+			case "Rogue":{
 				spellCaster = false;
 				disableNonClassItems = true;
 				prayerAllowed = true;
@@ -903,7 +903,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		if ((entryMatches(event,"Wield"))) {
 			String itemName = getCurrentItemName(event);
 
-			if(getAllowedItems(itemName) == 1 || config.enableNonClassItems()==true)
+			if(getAllowedItems(itemName) == 1 || config.enableNonClassItems())
 			{
 				//Do nothing, item is allowed
 			}
@@ -919,7 +919,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 		if ((entryMatches(event,"Activate")))
 		{
-			if(prayerAllowed == true || config.forceAllowPrayer()==true)
+			if(prayerAllowed || config.forceAllowPrayer())
 			{
 				//Player allowed to used prayer
 			}
