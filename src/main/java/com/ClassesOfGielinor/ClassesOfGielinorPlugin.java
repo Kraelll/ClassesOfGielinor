@@ -33,6 +33,8 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.Text;
 
+import java.util.Locale;
+
 @Slf4j
 @PluginDescriptor(
 	name = "Classes of Gielinor",
@@ -55,6 +57,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		[x]][1..n] - n will be an entry in to the array for items names, and will go from 1-n
 		Each class will have 20 available "valid item" slots which can be cahnged in the code.
 	 */
+	public String[] toolItems = new String[9];
 
 	@Inject
 	private Client client;
@@ -88,6 +91,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 			getClassRestrictions(config.playerClass().toString());
 			setAllowedItems(config.playerClass().toString());
 			setClassPermanentItems(config.playerClass().toString());
+			setToolItems();
 			return;
 		}
 	}
@@ -133,6 +137,86 @@ public class ClassesOfGielinorPlugin extends Plugin
 		}
 	}
 
+	private void setToolItems()
+	{
+		toolItems[0] = "Glassblowing pipe";
+		toolItems[1] = "Secateurs";
+		toolItems[2] = " Rod";
+		toolItems[3] = "Harpoon";
+		toolItems[4] = " Axe";
+		toolItems[5] = "Machete";
+		toolItems[6] = "Pickaxe";
+		toolItems[7] = "Butterfly Net";
+		toolItems[8] = "Teasing stick";
+	}
+
+	private boolean compareToTools(String currentItem)
+	{
+		int i;
+		int FoundFlag = 0;
+		String ArrayItem;
+		currentItem = currentItem.toUpperCase();
+
+		while(FoundFlag <= 0)
+		{
+			for(i=0; i < toolItems.length; i++)
+			{
+				ArrayItem = toolItems[i].toUpperCase();
+				if(currentItem.contains(ArrayItem))
+				{
+					FoundFlag = 1;
+				}
+			}
+			FoundFlag = 2;
+		}
+
+		if (FoundFlag == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+	private boolean compareToItemArrays(String entity, String[][] setArray)
+	{
+		//Check through the array to detect if the item name appears anywhere in the items list for that class.
+		int classID = getClassID(config.playerClass().toString());
+
+		int FoundFlag = 0;
+		int i;
+		String ArrayItem;
+		entity = entity.toUpperCase();
+
+		while(FoundFlag <= 0)
+		{
+			for(i = 1; i < setArray.length; i++)
+			{
+				ArrayItem = setArray[classID][i].toUpperCase();
+				if(entity.contains(ArrayItem) || ArrayItem == "!ALL!")
+				{
+					FoundFlag = 1;
+				}
+			}
+
+			if(FoundFlag != 1)
+			{
+				FoundFlag = 2;
+			}
+		}
+
+		if(FoundFlag == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
 	private void getClassRestrictions(String PlayerClass)
 	{
@@ -245,7 +329,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][13] = "Rubber chicken";
 				validClassItems[classID][14] = "Carrot sword";
 				validClassItems[classID][15] = "Candy cane";
-				validClassItems[classID][16] = "----";
+				validClassItems[classID][16] = "scimitar";
 				validClassItems[classID][17] = "----";
 				validClassItems[classID][18] = "----";
 				validClassItems[classID][19] = "----";
@@ -286,7 +370,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 				validClassItems[classID][1] = "axe";
 				validClassItems[classID][2] = "thrownaxe";
-				validClassItems[classID][3] = "----";
+				validClassItems[classID][3] = " saw";
 				validClassItems[classID][4] = "----";
 				validClassItems[classID][5] = "----";
 				validClassItems[classID][6] = "----";
@@ -316,8 +400,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "sceptre";
 				validClassItems[classID][4] = "crozier";
 				validClassItems[classID][5] = "Dawnbringer";
-				validClassItems[classID][6] = "----";
-				validClassItems[classID][7] = "----";
+				validClassItems[classID][6] = "book of";
+				validClassItems[classID][7] = "tome";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";
@@ -371,9 +455,9 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][4] = "crozier";
 				validClassItems[classID][5] = "Dawnbringer";
 				validClassItems[classID][6] = "wand";
-				validClassItems[classID][7] = "----";
-				validClassItems[classID][8] = "----";
-				validClassItems[classID][9] = "----";
+				validClassItems[classID][7] = "mage";
+				validClassItems[classID][8] = "book of";
+				validClassItems[classID][9] = "tome";
 				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
@@ -449,7 +533,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][2] = "dagger";
 				validClassItems[classID][3] = "scimitar";
 				validClassItems[classID][4] = "lyre";
-				validClassItems[classID][5] = "----";
+				validClassItems[classID][5] = "knife";
 				validClassItems[classID][6] = "----";
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
@@ -476,7 +560,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][2] = "staff";
 				validClassItems[classID][3] = "Guthix";
 				validClassItems[classID][4] = "sickle";
-				validClassItems[classID][5] = "----";
+				validClassItems[classID][5] = "dagger";
 				validClassItems[classID][6] = "----";
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
@@ -510,7 +594,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][9] = "dagger";
 				validClassItems[classID][10] = " sword";
 				validClassItems[classID][11] = "shield";
-				validClassItems[classID][12] = "----";
+				validClassItems[classID][12] = "defender";
 				validClassItems[classID][13] = "----";
 				validClassItems[classID][14] = "----";
 				validClassItems[classID][15] = "----";
@@ -583,8 +667,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][1] = "staff";
 				validClassItems[classID][2] = "wand";
 				validClassItems[classID][3] = "blessing";
-				validClassItems[classID][4] = "----";
-				validClassItems[classID][5] = "----";
+				validClassItems[classID][4] = "tome";
+				validClassItems[classID][5] = "book of";
 				validClassItems[classID][6] = "----";
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
@@ -660,40 +744,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 		}
 		return classID;
-	}
-
-	private int getAllowedItems(String currentItem)
-	{
-		//Check through the array to detect if the weapon name appears anywhere in the allowed items list for that class.
-		int classID = getClassID(config.playerClass().toString());
-
-		int i;
-		int itemAllowed = 0;
-		String ArrayItem = "";
-		currentItem = currentItem.toUpperCase();
-
-		while(itemAllowed <= 0)
-		{
-			for(i = 1; i < validClassItems.length; i++)
-			{
-				ArrayItem = validClassItems[classID][i].toUpperCase();
-				if(currentItem.contains(ArrayItem) || ArrayItem == "!ALL!")
-				{
-					itemAllowed = 1;
-				}
-				else
-				{
-					//Do nothing, leave item allowed 0
-				}
-			}
-
-			if(itemAllowed != 1)
-			{
-				itemAllowed = 2;
-			}
-		}
-
-		return itemAllowed;
 	}
 
 	private void setClassPermanentItems(String ClassName)
@@ -806,40 +856,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 		}
 	}
 
-	private int getClassPermanentItems(String currentItem)
-	{
-		//Check through the array to detect if the weapon name appears anywhere in the allowed items list for that class.
-		int classID = getClassID(config.playerClass().toString());
-
-		int i;
-		int permFlag = 0;
-		String ArrayItem = "";
-		currentItem = currentItem.toUpperCase();
-
-		while(permFlag <= 0)
-		{
-			for(i = 1; i < permClassItems.length; i++)
-			{
-				ArrayItem = permClassItems[classID][i].toUpperCase();
-				if(currentItem.contains(ArrayItem))
-				{
-					permFlag = 1;
-				}
-				else
-				{
-					//Do nothing, leave permanent flag as 0
-				}
-			}
-
-			if(permFlag != 1)
-			{
-				permFlag = 2;
-			}
-		}
-
-		return permFlag;
-	}
-
 	public String getCurrentItemName(MenuOptionClicked event)
 	{
 		//Detect the name of the item that was just clicked on
@@ -901,7 +917,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		if ((entryMatches(event,"Wield"))) {
 			String itemName = getCurrentItemName(event);
 
-			if(getAllowedItems(itemName) == 1 || config.enableNonClassItems())
+			if(compareToItemArrays(itemName,validClassItems) || compareToTools(itemName) || config.enableNonClassItems())
 			{
 				//Do nothing, item is allowed
 			}
