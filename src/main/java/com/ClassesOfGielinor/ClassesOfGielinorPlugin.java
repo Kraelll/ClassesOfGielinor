@@ -33,8 +33,6 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.Text;
 
-import java.util.Locale;
-
 @Slf4j
 @PluginDescriptor(
 	name = "Classes of Gielinor",
