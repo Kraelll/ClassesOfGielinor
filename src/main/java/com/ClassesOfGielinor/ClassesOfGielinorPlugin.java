@@ -160,7 +160,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 			for(i=0; i < toolItems.length; i++)
 			{
 				ArrayItem = toolItems[i].toUpperCase();
-				if(currentItem.contains(ArrayItem))
+				if(ArrayItem.contains(currentItem))
 				{
 					FoundFlag = 1;
 				}
