@@ -53,7 +53,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	/* Array Structure:
 		[x][0] - x will always be a class ID, and [0] will always be the class' string name for easy identification
 		[x]][1..n] - n will be an entry in to the array for items names, and will go from 1-n
-		Each class will have 20 available "valid item" slots which can be cahnged in the code.
+		Each class will have 20 available "valid item" slots which can be changed in the code.
 	 */
 	public String[] toolItems = new String[9];
 
@@ -328,7 +328,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][14] = "Carrot sword";
 				validClassItems[classID][15] = "Candy cane";
 				validClassItems[classID][16] = "scimitar";
-				validClassItems[classID][17] = "----";
+				validClassItems[classID][17] = "shield";
 				validClassItems[classID][18] = "----";
 				validClassItems[classID][19] = "----";
 				validClassItems[classID][20] = "----";
@@ -475,7 +475,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][0] = PlayerClass;
 				validClassItems[classID][1] = "godsword";
 				validClassItems[classID][2] = "bulwark";
-				validClassItems[classID][3] = "mace";
+				validClassItems[classID][3] = "----";
 				validClassItems[classID][4] = "flail";
 				validClassItems[classID][5] = "2h";
 				validClassItems[classID][6] = "hasta";
@@ -487,7 +487,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][12] = " sword";
 				validClassItems[classID][13] = " longsword";
 				validClassItems[classID][14] = "shield";
-				validClassItems[classID][15] = "----";
+				validClassItems[classID][15] = "light"; //All variations of Silverlight
 				validClassItems[classID][16] = "----";
 				validClassItems[classID][17] = "----";
 				validClassItems[classID][18] = "----";
@@ -929,7 +929,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 		}
 
-		if ((entryMatches(event,"Activate")))
+		if ((entryMatches(event,"Activate")) || (entryMatches(event,"Pray-at")))
 		{
 			if(prayerAllowed || config.forceAllowPrayer())
 			{
