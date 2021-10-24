@@ -532,7 +532,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "scimitar";
 				validClassItems[classID][4] = "lyre";
 				validClassItems[classID][5] = "knife";
-				validClassItems[classID][6] = "----";
+				validClassItems[classID][6] = "wand";
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
