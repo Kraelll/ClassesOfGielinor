@@ -56,6 +56,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		Each class will have 20 available "valid item" slots which can be changed in the code.
 	 */
 	public String[] toolItems = new String[9];
+	public String[][] classDialogue = new String[21][21]; //Contains response dialogue for each class.
 
 	@Inject
 	private Client client;
@@ -102,6 +103,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		getClassRestrictions(currentClass);
 		setAllowedItems(currentClass);
 		setClassPermanentItems(currentClass);
+		setClassDialogue(currentClass);
 
 		String msgStr = "";
 
@@ -277,7 +279,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	private void setAllowedItems(String PlayerClass)
 	{
 		//I apologise for how hard coded this section is. Unfortunately by the nature of the restrictions there is no way to automate it.
-		//(Unless I use an XML file of some kind)
+		//(Unless I use an XML file of some kind, but I'd prefer not to upload lots of bespoke files to the plugin-hub repository.)
 		int classID = -1;
 
 		switch(PlayerClass)
@@ -532,7 +534,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "scimitar";
 				validClassItems[classID][4] = "lyre";
 				validClassItems[classID][5] = "knife";
-				validClassItems[classID][6] = "----";
+				validClassItems[classID][6] = "wand";
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
@@ -642,7 +644,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][5] = "bolt";
 				validClassItems[classID][6] = "blackjack";
 				validClassItems[classID][7] = "rapier";
-				validClassItems[classID][8] = "----";
+				validClassItems[classID][8] = "defender";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
@@ -742,6 +744,14 @@ public class ClassesOfGielinorPlugin extends Plugin
 				break;
 		}
 		return classID;
+	}
+
+	private void setClassDialogue(String ClassName)
+	{
+		switch(ClassName)
+		{
+			//Sets the speech for
+		}
 	}
 
 	private void setClassPermanentItems(String ClassName)
@@ -912,7 +922,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 		    }
 		}
 
-		if ((entryMatches(event,"Wield"))) {
+		if ((entryMatches(event,"Wield")))
+		{
 			String itemName = getCurrentItemName(event);
 
 			if(compareToItemArrays(itemName,validClassItems) || compareToTools(itemName) || config.enableNonClassItems())

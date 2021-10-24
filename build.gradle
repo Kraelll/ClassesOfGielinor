@@ -1,3 +1,7 @@
+group = 'com.ClassesOfGielinor'
+version = '1.2.0'
+sourceCompatibility = '1.8'
+
 plugins {
 	id 'java'
 }
@@ -13,19 +17,15 @@ repositories {
 //def runeLiteVersion = '1.7.x'
 
 dependencies {
-	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
+	compileOnly group: 'net.runelite', name: 'client', version: runeLiteVersion
 
 	compileOnly 'org.projectlombok:lombok:1.18.4'
 	annotationProcessor 'org.projectlombok:lombok:1.18.4'
 
 	testImplementation 'junit:junit:4.12'
-	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
-	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
+	testImplementation group: 'net.runelite', name: 'client', version: runeLiteVersion
+	testImplementation group: 'net.runelite', name: 'jshell', version: runeLiteVersion
 }
-
-group = 'com.ClassesOfGielinor'
-version = '1.1.4'
-sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
