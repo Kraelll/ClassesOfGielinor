@@ -451,7 +451,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][0] = PlayerClass;
 				validClassItems[classID][1] = "rapier";
 				validClassItems[classID][2] = "dagger";
-<<<<<<< HEAD
+
 				validClassItems[classID][3] = "wand";
 				validClassItems[classID][4] = "book";
 				validClassItems[classID][5] = "lance";
@@ -459,7 +459,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][7] = "trident";
 				validClassItems[classID][8] = "sanguinestistaff";
 				validClassItems[classID][9] = "nightmarestaff";
-=======
+
 				validClassItems[classID][3] = "scimitar";
 				validClassItems[classID][4] = "lyre";
 				validClassItems[classID][5] = "knife";
@@ -467,7 +467,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
->>>>>>> f90fa77ab9f5aa099d8e946fc6be0673a8ebddbf
+
 				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
@@ -542,13 +542,13 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "crossbow";
 				validClassItems[classID][4] = "defender";
 				validClassItems[classID][5] = "bolt";
-<<<<<<< HEAD
+
 				validClassItems[classID][6] = "whip";
 				validClassItems[classID][7] = "scythe";
 				validClassItems[classID][8] = "lance";
 				validClassItems[classID][9] = "ballistas";
 				validClassItems[classID][10] = "blowpipe";
-=======
+
 				validClassItems[classID][6] = "blackjack";
 				validClassItems[classID][7] = "rapier";
 				validClassItems[classID][8] = "defender";
@@ -581,7 +581,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";
->>>>>>> f90fa77ab9f5aa099d8e946fc6be0673a8ebddbf
+
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -642,8 +642,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 		return classID;
 	}
 
-<<<<<<< HEAD
-=======
+
+
 	private void setClassDialogue(String ClassName)
 	{
 		switch(ClassName)
@@ -762,7 +762,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		}
 	}
 
->>>>>>> f90fa77ab9f5aa099d8e946fc6be0673a8ebddbf
+
 	public String getCurrentItemName(MenuOptionClicked event)
 	{
 		//Detect the name of the item that was just clicked on
