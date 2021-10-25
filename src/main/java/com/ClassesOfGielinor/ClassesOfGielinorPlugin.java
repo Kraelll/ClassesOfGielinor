@@ -56,6 +56,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		Each class will have 20 available "valid item" slots which can be changed in the code.
 	 */
 	public String[] toolItems = new String[9];
+	public String[][] classDialogue = new String[21][21]; //Contains response dialogue for each class.
 
 	@Inject
 	private Client client;
@@ -102,6 +103,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		getClassRestrictions(currentClass);
 		setAllowedItems(currentClass);
 		setClassPermanentItems(currentClass);
+		setClassDialogue(currentClass);
 
 		String msgStr = "";
 
@@ -257,7 +259,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	private void setAllowedItems(String PlayerClass)
 	{
 		//I apologise for how hard coded this section is. Unfortunately by the nature of the restrictions there is no way to automate it.
-		//(Unless I use an XML file of some kind)
+		//(Unless I use an XML file of some kind, but I'd prefer not to upload lots of bespoke files to the plugin-hub repository.)
 		int classID = -1;
 
 		switch(PlayerClass)
@@ -449,6 +451,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][0] = PlayerClass;
 				validClassItems[classID][1] = "rapier";
 				validClassItems[classID][2] = "dagger";
+<<<<<<< HEAD
 				validClassItems[classID][3] = "wand";
 				validClassItems[classID][4] = "book";
 				validClassItems[classID][5] = "lance";
@@ -456,6 +459,15 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][7] = "trident";
 				validClassItems[classID][8] = "sanguinestistaff";
 				validClassItems[classID][9] = "nightmarestaff";
+=======
+				validClassItems[classID][3] = "scimitar";
+				validClassItems[classID][4] = "lyre";
+				validClassItems[classID][5] = "knife";
+				validClassItems[classID][6] = "wand";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+>>>>>>> f90fa77ab9f5aa099d8e946fc6be0673a8ebddbf
 				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
@@ -530,11 +542,46 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "crossbow";
 				validClassItems[classID][4] = "defender";
 				validClassItems[classID][5] = "bolt";
+<<<<<<< HEAD
 				validClassItems[classID][6] = "whip";
 				validClassItems[classID][7] = "scythe";
 				validClassItems[classID][8] = "lance";
 				validClassItems[classID][9] = "ballistas";
 				validClassItems[classID][10] = "blowpipe";
+=======
+				validClassItems[classID][6] = "blackjack";
+				validClassItems[classID][7] = "rapier";
+				validClassItems[classID][8] = "defender";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Warlock": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "staff";
+				validClassItems[classID][2] = "wand";
+				validClassItems[classID][3] = "blessing";
+				validClassItems[classID][4] = "tome";
+				validClassItems[classID][5] = "book of";
+				validClassItems[classID][6] = "----";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+>>>>>>> f90fa77ab9f5aa099d8e946fc6be0673a8ebddbf
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -595,6 +642,127 @@ public class ClassesOfGielinorPlugin extends Plugin
 		return classID;
 	}
 
+<<<<<<< HEAD
+=======
+	private void setClassDialogue(String ClassName)
+	{
+		switch(ClassName)
+		{
+			//Sets the speech for
+		}
+	}
+
+	private void setClassPermanentItems(String ClassName)
+	{
+		switch(ClassName)
+		{
+			case "Chef":{
+				int ClassID = getClassID(ClassName);
+				permClassItems[ClassID][0] = ClassName;
+
+				permClassItems[ClassID][1] = "Chef's hat";
+				permClassItems[ClassID][2] = "Golden chef's hat";
+				permClassItems[ClassID][3] = "Golden apron";
+				permClassItems[ClassID][4] = "----";
+				permClassItems[ClassID][5] = "----";
+				permClassItems[ClassID][6] = "----";
+				permClassItems[ClassID][7] = "----";
+				permClassItems[ClassID][8] = "----";
+				permClassItems[ClassID][9] = "----";
+				permClassItems[ClassID][10] = "----";
+				permClassItems[ClassID][11] = "----";
+				permClassItems[ClassID][12] = "----";
+				permClassItems[ClassID][13] = "----";
+				permClassItems[ClassID][14] = "----";
+				permClassItems[ClassID][15] = "----";
+				permClassItems[ClassID][16] = "----";
+				permClassItems[ClassID][17] = "----";
+				permClassItems[ClassID][18] = "----";
+				permClassItems[ClassID][19] = "----";
+				permClassItems[ClassID][20] = "----";
+			}
+
+			case "Lumberjack":{
+				int ClassID = getClassID(ClassName);
+				permClassItems[ClassID][0] = ClassName;
+
+				permClassItems[ClassID][1] = "axe";
+				permClassItems[ClassID][2] = "Lumberjack";
+				permClassItems[ClassID][3] = "----";
+				permClassItems[ClassID][4] = "----";
+				permClassItems[ClassID][5] = "----";
+				permClassItems[ClassID][6] = "----";
+				permClassItems[ClassID][7] = "----";
+				permClassItems[ClassID][8] = "----";
+				permClassItems[ClassID][9] = "----";
+				permClassItems[ClassID][10] = "----";
+				permClassItems[ClassID][11] = "----";
+				permClassItems[ClassID][12] = "----";
+				permClassItems[ClassID][13] = "----";
+				permClassItems[ClassID][14] = "----";
+				permClassItems[ClassID][15] = "----";
+				permClassItems[ClassID][16] = "----";
+				permClassItems[ClassID][17] = "----";
+				permClassItems[ClassID][18] = "----";
+				permClassItems[ClassID][19] = "----";
+				permClassItems[ClassID][20] = "----";
+			}
+
+			case "Ranger":{
+				int ClassID = getClassID(ClassName);
+				permClassItems[ClassID][0] = ClassName;
+
+				permClassItems[ClassID][1] = "Ranger";
+				permClassItems[ClassID][2] = "Robin hood hat";
+				permClassItems[ClassID][3] = "----";
+				permClassItems[ClassID][4] = "----";
+				permClassItems[ClassID][5] = "----";
+				permClassItems[ClassID][6] = "----";
+				permClassItems[ClassID][7] = "----";
+				permClassItems[ClassID][8] = "----";
+				permClassItems[ClassID][9] = "----";
+				permClassItems[ClassID][10] = "----";
+				permClassItems[ClassID][11] = "----";
+				permClassItems[ClassID][12] = "----";
+				permClassItems[ClassID][13] = "----";
+				permClassItems[ClassID][14] = "----";
+				permClassItems[ClassID][15] = "----";
+				permClassItems[ClassID][16] = "----";
+				permClassItems[ClassID][17] = "----";
+				permClassItems[ClassID][18] = "----";
+				permClassItems[ClassID][19] = "----";
+				permClassItems[ClassID][20] = "----";
+			}
+
+			case "Wizard":{
+				int ClassID = getClassID(ClassName);
+				permClassItems[ClassID][0] = ClassName;
+
+				permClassItems[ClassID][1] = "Wizard hat";
+				permClassItems[ClassID][2] = "Blue wizard hat";
+				permClassItems[ClassID][3] = "Master wand";
+				permClassItems[ClassID][4] = "----";
+				permClassItems[ClassID][5] = "----";
+				permClassItems[ClassID][6] = "----";
+				permClassItems[ClassID][7] = "----";
+				permClassItems[ClassID][8] = "----";
+				permClassItems[ClassID][9] = "----";
+				permClassItems[ClassID][10] = "----";
+				permClassItems[ClassID][11] = "----";
+				permClassItems[ClassID][12] = "----";
+				permClassItems[ClassID][13] = "----";
+				permClassItems[ClassID][14] = "----";
+				permClassItems[ClassID][15] = "----";
+				permClassItems[ClassID][16] = "----";
+				permClassItems[ClassID][17] = "----";
+				permClassItems[ClassID][18] = "----";
+				permClassItems[ClassID][19] = "----";
+				permClassItems[ClassID][20] = "----";
+			}
+		}
+	}
+
+>>>>>>> f90fa77ab9f5aa099d8e946fc6be0673a8ebddbf
 	public String getCurrentItemName(MenuOptionClicked event)
 	{
 		//Detect the name of the item that was just clicked on
@@ -653,7 +821,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 		    }
 		}
 
-		if ((entryMatches(event,"Wield"))) {
+		if ((entryMatches(event,"Wield")))
+		{
 			String itemName = getCurrentItemName(event);
 
 			if(compareToItemArrays(itemName,validClassItems) || compareToTools(itemName) || config.enableNonClassItems())
