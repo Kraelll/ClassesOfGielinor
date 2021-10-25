@@ -29,5 +29,5 @@ There are three main restrictions that are placed on each class:
 Please note that these restrictions can be overridden in the plugin configuration menu in RuneLite. Feel free to suggest any extra classes you would like adding and recommendations on how to improve/rebalance the ones already made.
 
 # Extra Information
-If you would like extra information surrounding the plugin, including a complete list of class limitations and a development changelog, then please visit this Google Sheets document: https://docs.google.com/spreadsheets/d/1dRJwlLma1VJSrhvLnNqqsi_mcKXsR2Kl7gB6Z5aErxQ/edit?usp=sharing
+If you would like extra information surrounding the plugin, including a complete list of class limitations and a development changelog, then please visit this Google Sheets document: https://docs.google.com/spreadsheets/d/1KFXqRT_ikN200mEpRIgmTDqrFBVEXGA0btsfSa4ZTrc/edit?usp=sharing
 
