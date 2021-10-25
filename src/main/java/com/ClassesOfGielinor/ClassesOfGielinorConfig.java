@@ -13,18 +13,14 @@ public interface ClassesOfGielinorConfig extends Config
 		None,
 		Barbarian,
 		Bard,
-		Chef,
+		Juggler,
 		Cleric,
 		Druid,
 		Fighter,
-		Lumberjack,
-		Monk,
 		Necromancer,
 		Paladin,
 		Ranger,
 		Rogue,
-		Warlock,
-		Wizard
 	}
 	@ConfigItem(
 			position = 1,
@@ -49,12 +45,4 @@ public interface ClassesOfGielinorConfig extends Config
 			description = "Overrides class options and enables spells for your character."
 	)
 	default boolean classIsSpellcaster(){ return false; }
-
-	@ConfigItem(
-			position = 4,
-			keyName = "forceAllowPrayer",
-			name = "Force Allow Prayer",
-			description = "Overrides class options and enables prayer for your character."
-	)
-	default boolean forceAllowPrayer(){ return false; }
 }
