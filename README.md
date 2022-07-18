@@ -5,13 +5,13 @@ Adds RPG-esque classes to Runescape to give you further limitations on your acco
 Currently there are a handful of classes, some which are familiar and some which may be a bit more tongue-in-cheek.
 * (None - A vanilla Runescape player experience. Full access to prayer and spellcasting, and no items are restricted.)
 
+* **Artificer** - A tinkerer, inventory, and master of craft. They create everything and anything that is needed. They prefer tools to weapons.
 * **Barbarian** - A savage warrior who prides themselves on their strength. They prefer big, heavy weaponry over flimsy swords and bows.
 * **Bard** - A master of social encounters through their music. Whilst not the most hardy, their magical abilities are on par with the most elite Wizards.
 * **Chef** - An expert of the cooking skill. Whilst they can cook up a storm, they shouldn't be relied upon for fighting... Most weapons past a butterknife are beyond them.
 * **Cleric** - A master of the healing magics, their power is usually bestowed by the Gods. Perhaps they may benefit from the Lunar Spellbook?
 * **Druid** - A protector of the forest and masters of natural magics. They dismiss most violent things and instead rely on magic to aide.
 * **Fighter** - A cunning warrior whose expertise in weapons is vast. Nice and simple, does what it says on the tin.
-* **Lumberjack** - An expert woodcutter and child of the forest. Brilliant for starting fires, but tied to their Axes and reluctant towards the magical elements of the world.
 * **Monk** - A devout follower of the Gods who prefers to rely on their faith when it comes to combat, though they do use blessed weaponry from time to time.
 * **Necromancer** - A master of magics surrounding the dead. The Arceuus Spellbook is definitely their ally, but don't rely on any help from the Gods. They don't take kindly.
 * **Paladin** - Brutal warriors who care not for magic, but pray for their strength and vitality. They favour weapons representative of the Gods of Gielinor.
