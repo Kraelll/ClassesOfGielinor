@@ -33,8 +33,9 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.util.GameEventManager;
 import net.runelite.client.util.Text;
-
+import net.runelite.api.coords.WorldPoint;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -294,7 +295,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 			case "Barbarian":
 			case "Chef":
 			case "Fighter":
-			case "Lumberjack":
+			case "Artificer":
 			case "Ranger": {
 				spellCaster = false;
 				disableNonClassItems = true;
@@ -442,7 +443,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 		//Underground Pass;
 		worldAltars[1][0] = "Chaos Altar";
-		worldAltars[1][1] = "NOT,SET,YET";
+		worldAltars[1][1] = "2415,9680,0";
 		worldAltars[1][2] = "Zamorak";
 
 		//Ourania Cave entrance;
@@ -452,207 +453,207 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 		//Wilderness Chaos Temple;
 		worldAltars[3][0] = "Chaos Altar";
-		worldAltars[3][1] = "Find Coords";
+		worldAltars[3][1] = "3240,3608,0";
 		worldAltars[3][2] = "Zamorak";
 
 		//Black Knight's Fortress;
 		worldAltars[4][0] = "Chaos Altar";
-		worldAltars[4][1] = "Find Coords";
+		worldAltars[4][1] = "3027,3510,1";
 		worldAltars[4][2] = "Zamorak";
 
 		//Chaos Temple near Goblin Village;
 		worldAltars[5][0] = "Chaos Altar";
-		worldAltars[5][1] = "Find Coords";
+		worldAltars[5][1] = "2933,3513,0";
 		worldAltars[5][2] = "Zamorak";
 
 		//Deep wilderness Chaos Temple;
 		worldAltars[6][0] = "Chaos Altar";
-		worldAltars[6][1] = "Find Coords";
+		worldAltars[6][1] = "2947,3821,0";
 		worldAltars[6][2] = "Zamorak";
 
 		//Yanille Agility dungeon;
 		worldAltars[7][0] = "Chaos Altar";
-		worldAltars[7][1] = "Find Coords";
+		worldAltars[7][1] = "2571,9500,0";
 		worldAltars[7][2] = "Zamorak";
 
 		//Tutorial Island;
 		worldAltars[8][0] = "Altar";
-		worldAltars[8][1] = "Find Coords";
+		worldAltars[8][1] = "3121,3106,0";
 		worldAltars[8][2] = "Saradomin";
 
 		//Lumbridge church;
 		worldAltars[9][0] = "Altar";
-		worldAltars[9][1] = "Find Coords";
+		worldAltars[9][1] = "3243,3207,0";
 		worldAltars[9][2] = "Saradomin";
 
-		//Between Rimmington, Port Sarim and Thurgo;
+		//Between Rimmington,Port Sarim and Thurgo;
 		worldAltars[10][0] = "Altar";
-		worldAltars[10][1] = "Find Coords";
+		worldAltars[10][1] = "2995,3177,0";
 		worldAltars[10][2] = "Saradomin";
 
 		//Duel Arena lobby;
 		worldAltars[11][0] = "Altar";
-		worldAltars[11][1] = "Find Coords";
+		worldAltars[11][1] = "3377,3285,0";
 		worldAltars[11][2] = "Saradomin";
 
 		//Varrock Palace;
 		worldAltars[12][0] = "Altar";
-		worldAltars[12][1] = "Find Coords";
+		worldAltars[12][1] = "3208,3495,1";
 		worldAltars[12][2] = "Saradomin";
 
 		//Seers' Village;
 		worldAltars[13][0] = "Altar";
-		worldAltars[13][1] = "Find Coords";
+		worldAltars[13][1] = "2694,3463,0";
 		worldAltars[13][2] = "Saradomin";
 
 		//East Ardougne;
 		worldAltars[14][0] = "Altar";
-		worldAltars[14][1] = "Find Coords";
+		worldAltars[14][1] = "2617,3309,0";
 		worldAltars[14][2] = "Saradomin";
 
 		//West Ardougne;
 		worldAltars[15][0] = "Altar";
-		worldAltars[15][1] = "Find Coords";
+		worldAltars[15][1] = "2530,3286,0";
 		worldAltars[15][2] = "Saradomin";
 
 		//Ardougne Monastery;
 		worldAltars[16][0] = "Altar";
-		worldAltars[16][1] = "Find Coords";
+		worldAltars[16][1] = "2606,3208,0";
 		worldAltars[16][2] = "Saradomin";
 
 		//Paterdomus;
 		worldAltars[17][0] = "Altar";
-		worldAltars[17][1] = "Find Coords";
+		worldAltars[17][1] = "3416,3489,0";
 		worldAltars[17][2] = "Saradomin";
 
 		//Entrana;
 		worldAltars[18][0] = "Altar";
-		worldAltars[18][1] = "Find Coords";
+		worldAltars[18][1] = "2853,3349,0";
 		worldAltars[18][2] = "Saradomin";
 
 		//Edgeville Monastery;
 		worldAltars[19][0] = "Altar";
-		worldAltars[19][1] = "Find Coords";
+		worldAltars[19][1] = "3051,3498,1";
 		worldAltars[19][2] = "Saradomin";
 
 		//Well of Voyage;
 		worldAltars[20][0] = "Altar";
-		worldAltars[20][1] = "Find Coords";
+		worldAltars[20][1] = "2341,9629,0";
 		worldAltars[20][2] = "Saradomin";
 
 		//Lletya;
 		worldAltars[21][0] = "Altar";
-		worldAltars[21][1] = "Find Coords";
+		worldAltars[21][1] = "2356,3172,1";
 		worldAltars[21][2] = "Seren";
 
 		//Tower of Voices;
 		worldAltars[22][0] = "Altar";
-		worldAltars[22][1] = "Find Coords";
+		worldAltars[22][1] = "3263,6091,2";
 		worldAltars[22][2] = "Seren";
 
 		//Prifddinas;
 		worldAltars[23][0] = "Altar";
-		worldAltars[23][1] = "Find Coords";
+		worldAltars[23][1] = "3246,6116,0";
 		worldAltars[23][2] = "Seren";
 
 		//Gorlah;
 		worldAltars[24][0] = "Altar";
-		worldAltars[24][1] = "Find Coords";
+		worldAltars[24][1] = "2284,3427,0";
 		worldAltars[24][2] = "Seren";
 
 		//North-eastern Varrock;
 		worldAltars[25][0] = "Altar";
-		worldAltars[25][1] = "Find Coords";
+		worldAltars[25][1] = "3254,3487,0";
 		worldAltars[25][2] = "Saradomin";
 
 		//Kourend Castle;
 		worldAltars[26][0] = "Altar";
-		worldAltars[26][1] = "Find Coords";
+		worldAltars[26][1] = "1617,3673,2";
 		worldAltars[26][2] = "Saradomin";
 
 		//Witchaven;
 		worldAltars[27][0] = "Altar";
-		worldAltars[27][1] = "Find Coords";
+		worldAltars[27][1] = "2728,3283,0";
 		worldAltars[27][2] = "Saradomin";
 
 		//Camelot;
 		worldAltars[28][0] = "Altar";
-		worldAltars[28][1] = "Find Coords";
+		worldAltars[28][1] = "2750,3496,1";
 		worldAltars[28][2] = "Saradomin";
 
 		//Heroes' Guild;
 		worldAltars[29][0] = "Altar";
-		worldAltars[29][1] = "Find Coords";
+		worldAltars[29][1] = "2889,3511,1";
 		worldAltars[29][2] = "Saradomin";
 
 		//Sophanem;
 		worldAltars[30][0] = "Altar";
-		worldAltars[30][1] = "Find Coords";
+		worldAltars[30][1] = "3281,2774,0";
 		worldAltars[30][2] = "Icthlarin";
 
 		//Hosidius' church;
 		worldAltars[31][0] = "Altar";
-		worldAltars[31][1] = "Find Coords";
+		worldAltars[31][1] = "1733,3572,0";
 		worldAltars[31][2] = "Saradomin";
 
 		//Hosidius monk's camp;
 		worldAltars[32][0] = "Altar";
-		worldAltars[32][1] = "Find Coords";
+		worldAltars[32][1] = "1743,3500,0";
 		worldAltars[32][2] = "Saradomin";
 
 		//Arceuus church;
 		worldAltars[33][0] = "Altar";
-		worldAltars[33][1] = "Find Coords";
+		worldAltars[33][1] = "1689,3794,2";
 		worldAltars[33][2] = "None";
 
 		//Lovakengj;
 		worldAltars[34][0] = "Altar";
-		worldAltars[34][1] = "Find Coords";
+		worldAltars[34][1] = "1547,3808,0";
 		worldAltars[34][2] = "Unknown";
 
 		//Molch;
 		worldAltars[35][0] = "Altar";
-		worldAltars[35][1] = "Find Coords";
+		worldAltars[35][1] = "1282,3677,0";
 		worldAltars[35][2] = "Xeric";
 
 		//Xeric's Shrine in Kebos Swamp;
 		worldAltars[36][0] = "Altar";
-		worldAltars[36][1] = "Find Coords";
+		worldAltars[36][1] = "1310,3619,0";
 		worldAltars[36][2] = "Xeric";
 
 		//Myths' Guild;
 		worldAltars[37][0] = "Altar";
-		worldAltars[37][1] = "Find Coords";
+		worldAltars[37][1] = "2457,2839,2";
 		worldAltars[37][2] = "Unknown";
 
 		//Forthos Dungeon;
 		worldAltars[38][0] = "Altar";
-		worldAltars[38][1] = "Find Coords";
+		worldAltars[38][1] = "1802,9950,0";
 		worldAltars[38][2] = "Ranul";
 
 		//Ferox Enclave;
 		worldAltars[39][0] = "Altar";
-		worldAltars[39][1] = "Find Coords";
+		worldAltars[39][1] = "3126,3636,0";
 		worldAltars[39][2] = "Zaros";
 
 		//Citharede Abbey on Desert Plateau;
 		worldAltars[40][0] = "Altar";
-		worldAltars[40][1] = "Find Coords";
+		worldAltars[40][1] = "3421,3180,0";
 		worldAltars[40][2] = "Saradomin";
 
 		//Clan Hall chapel;
 		worldAltars[41][0] = "Altar";
-		worldAltars[41][1] = "Find Coords";
+		worldAltars[41][1] = "1175,5467,0";
 		worldAltars[41][2] = "None";
 
 		//Taverley stone circle;
 		worldAltars[42][0] = "Altar of Guthix";
-		worldAltars[42][1] = "Find Coords";
+		worldAltars[42][1] = "2925,3483,0";
 		worldAltars[42][2] = "Guthix";
 
 		//Nature grotto in Mort Myre Swamp;
 		worldAltars[43][0] = "Altar of nature";
-		worldAltars[43][1] = "Find Coords";
+		worldAltars[43][1] = "3442,9740,1";
 		worldAltars[43][2] = "Guthix";
 
 		//God Wars Dungeon;
@@ -682,38 +683,58 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 		//Slepe church;
 		worldAltars[49][0] = "Altar of Zamorak";
-		worldAltars[49][1] = "Find Coords";
+		worldAltars[49][1] = "3738,3307,0";
 		worldAltars[49][2] = "Zamorak";
 
 		//Forthos dungeon;
 		worldAltars[50][0] = "Broken sun altar";
-		worldAltars[50][1] = "Find Coords";
+		worldAltars[50][1] = "1795,9951,0";
 		worldAltars[50][2] = "Ralos";
 
 		//Woodcutting Guild;
 		worldAltars[51][0] = "Shrine";
-		worldAltars[51][1] = "Find Coords";
+		worldAltars[51][1] = "1613,3515,0";
 		worldAltars[51][2] = "Evil Chicken";
 
 		//Tai Bwo Wannai;
 		worldAltars[52][0] = "Tribal Statue";
-		worldAltars[52][1] = "Find Coords";
+		worldAltars[52][1] = "2796,3090,0";
 		worldAltars[52][2] = "Karamjan gods";
 
 		//Darkmeyer;
 		worldAltars[53][0] = "Statue";
-		worldAltars[53][1] = "Find Coords";
+		worldAltars[53][1] = "3605,3355,0";
 		worldAltars[53][2] = "Unknown";
 
 		//Temple of Marimbo;
 		worldAltars[54][0] = "Gorilla Statue";
-		worldAltars[54][1] = "Find Coords";
+		worldAltars[54][1] = "2798,2800,1";
 		worldAltars[54][2] = "Marimbo";
 
 		//Nardah;
 		worldAltars[55][0] = "Elidinis Statuette";
-		worldAltars[55][1] = "Find Coords";
+		worldAltars[55][1] = "3427,2930,0";
 		worldAltars[55][2] = "Elidinis";
+
+		//Ourania Altar;
+		worldAltars[56][0] = "Chaos Altar";
+		worldAltars[56][1] = "2455,3231,0";
+		worldAltars[56][2] = "Zamorak";
+
+		//Ferox Enclave;
+		worldAltars[57][0] = "Altar";
+		worldAltars[57][1] = "3177,3626,0";
+		worldAltars[57][2] = "Zaros";
+
+		//Shayzien Hut;
+		worldAltars[58][0] = "Altar";
+		worldAltars[58][1] = "1498,3562,0";
+		worldAltars[58][2] = "Saradomin";
+
+		//South Varrock;
+		worldAltars[59][0] = "Chaos Altar";
+		worldAltars[59][1] = "3259,3381,0";
+		worldAltars[59][2] = "Zamorak";
 	}
 
 	private void setAllowedItems(String PlayerClass)
@@ -733,6 +754,33 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][4] = "----";
 				validClassItems[classID][5] = "----";
 				validClassItems[classID][6] = "----";
+				validClassItems[classID][7] = "----";
+				validClassItems[classID][8] = "----";
+				validClassItems[classID][9] = "----";
+				validClassItems[classID][10] = "----";
+				validClassItems[classID][11] = "----";
+				validClassItems[classID][12] = "----";
+				validClassItems[classID][13] = "----";
+				validClassItems[classID][14] = "----";
+				validClassItems[classID][15] = "----";
+				validClassItems[classID][16] = "----";
+				validClassItems[classID][17] = "----";
+				validClassItems[classID][18] = "----";
+				validClassItems[classID][19] = "----";
+				validClassItems[classID][20] = "----";
+				break;
+			}
+
+			case "Artificer": {
+				classID = getClassID(PlayerClass);
+				validClassItems[classID][0] = PlayerClass;
+
+				validClassItems[classID][1] = "axe";
+				validClassItems[classID][2] = "thrownaxe";
+				validClassItems[classID][3] = " saw";
+				validClassItems[classID][4] = "hammer";
+				validClassItems[classID][5] = "knife";
+				validClassItems[classID][6] = "knives";
 				validClassItems[classID][7] = "----";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
@@ -791,33 +839,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][8] = "halberd";
 				validClassItems[classID][9] = "godsword";
 				validClassItems[classID][10] = "shield";
-				validClassItems[classID][11] = "----";
-				validClassItems[classID][12] = "----";
-				validClassItems[classID][13] = "----";
-				validClassItems[classID][14] = "----";
-				validClassItems[classID][15] = "----";
-				validClassItems[classID][16] = "----";
-				validClassItems[classID][17] = "----";
-				validClassItems[classID][18] = "----";
-				validClassItems[classID][19] = "----";
-				validClassItems[classID][20] = "----";
-				break;
-			}
-
-			case "Lumberjack": {
-				classID = getClassID(PlayerClass);
-				validClassItems[classID][0] = PlayerClass;
-
-				validClassItems[classID][1] = "axe";
-				validClassItems[classID][2] = "thrownaxe";
-				validClassItems[classID][3] = " saw";
-				validClassItems[classID][4] = "----";
-				validClassItems[classID][5] = "----";
-				validClassItems[classID][6] = "----";
-				validClassItems[classID][7] = "----";
-				validClassItems[classID][8] = "----";
-				validClassItems[classID][9] = "----";
-				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -1147,7 +1168,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 			case "Cleric":
 				classID = 2;
 				break;
-			case "Lumberjack":
+			case "Artificer":
 				classID = 3;
 				break;
 			case "Necromancer":
@@ -1190,7 +1211,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	private void setClassDialogue(String ClassName)
 	{
 		/* One idea I have is to implement different chat lines for interactions of different classes. For example, when trying to pray
-		   a necromancer may say "Foolishness, no God will help me achieve my destiny." whereas a barbarian may say "Weak God not help, only beer!"
+		   a necromancer may say "Praise be to Zamorak, may his chaos reign eternal!" whereas a barbarian may say "For Bandos, and glory!"
 
 		   Could be a cool idea. Requires a lot of work, and a lot of observation in to what action is currently being used.. but could be fun.
 		*/
@@ -1199,6 +1220,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 		}
 	}
+
 
 	private void setClassPermanentItems(String ClassName)
 	{
@@ -1236,14 +1258,14 @@ public class ClassesOfGielinorPlugin extends Plugin
 				permClassItems[ClassID][20] = "----";
 			}
 
-			case "Lumberjack":{
+			case "Artificer":{
 				int ClassID = getClassID(ClassName);
 				permClassItems[ClassID][0] = ClassName;
 
-				permClassItems[ClassID][1] = "axe";
-				permClassItems[ClassID][2] = "Lumberjack";
-				permClassItems[ClassID][3] = "----";
-				permClassItems[ClassID][4] = "----";
+				permClassItems[ClassID][1] = "Smiths tunic";
+				permClassItems[ClassID][2] = "Smiths trousers";
+				permClassItems[ClassID][3] = "Smiths gloves";
+				permClassItems[ClassID][4] = "Smiths boots";
 				permClassItems[ClassID][5] = "----";
 				permClassItems[ClassID][6] = "----";
 				permClassItems[ClassID][7] = "----";
@@ -1420,17 +1442,76 @@ public class ClassesOfGielinorPlugin extends Plugin
 		}
 
 		//Praying at Altars Observer
-		if ((entryMatches(event,"Pray-at")) || (entryMatches(event,"Pray"))) {
-			/* Eventually this section could be used to determine if the player is praying at a specific altar
-			   and determine whether or not they would be permitted to pray at an altar dedicated to a deity or not.
+		if ((entryMatches(event,"Pray-at")) || (entryMatches(event,"Pray")))
+		{
+			String msgStr = "";
 
-			   The best way to do this is with a new array for a list of altars with their deity and world location.
-			   The method will compare the player's location to the location of the altar, and determine if the player
-			   can worship that god or not. This would also need a new "deity" section for each class which it will
-			   check against.
+			//Get Player's co-ordinates
+			WorldPoint currentCoords = client.getLocalPlayer().getWorldLocation();
+			int currentX = currentCoords.getX();
+			int currentY = currentCoords.getY();
+			int altarFoundFlag = 0;
+			int altarMatch = 0;
 
-			*/
+			//Create proximity threshold
+			int MinXProx = currentX - 2;
+			int MaxXProx = currentX + 2;
+			int MinYProx = currentY - 2;
+			int MaxYProx = currentY + 2;
+
+			//Check Altars
+			for(int i = 0; i < worldAltars.length; i++)
+			{
+				if (altarFoundFlag == 0)
+				{
+					String[] altarCoords = worldAltars[i][1].split(",");
+
+					int altarX = Integer.parseInt(altarCoords[0]);
+					int altarY = Integer.parseInt(altarCoords[1]);
+
+					if ((altarX <= MaxXProx) && (altarX >= MinXProx) && (altarY <= MaxYProx) && (altarY >= MinYProx))
+					{
+						altarFoundFlag = 1;
+						altarMatch = i;
+					}
+					else
+					{
+						//Do nothing, they are not at this altar.
+					}
+				}
+			}
+			if(altarMatch > 0)
+			{
+				String altarDiety = worldAltars[altarMatch][2];
+				int GodFound = 0;
+
+				for (int x = 0; x < playerDeities.length; x++)
+				{
+					if(playerDeities[x].contains(altarDiety))
+					{
+						GodFound = 1;
+					}
+					else
+					{
+						//Do nothing, this altar does not belong to this diety.
+					}
+				}
+
+				if (GodFound > 0)
+				{
+					//God found: player can pray at this altar
+					msgStr = "You feel the embrace of " + altarDiety + " as you approach the altar.";
+					sendChatMessage(msgStr);
+				}
+				else
+				{
+					//No god was found: player cannot pray at this altar.
+					event.consume();
+					msgStr = "You feel nothing. You do not have the blessing of " + altarDiety;
+					sendChatMessage(msgStr);
+				}
+			}
 		}
-
 	}
 }
+

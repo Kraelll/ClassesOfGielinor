@@ -12,13 +12,13 @@ public interface ClassesOfGielinorConfig extends Config
 	//Config Variables
 	enum ClassListEnum{
 		None,
+		Artificer,
 		Barbarian,
 		Bard,
 		Chef,
 		Cleric,
 		Druid,
 		Fighter,
-		Lumberjack,
 		Monk,
 		Necromancer,
 		Paladin,
@@ -109,5 +109,14 @@ public interface ClassesOfGielinorConfig extends Config
 			section = overrides
 	)
 	default boolean disablePermItems(){ return false; }
+
+	@ConfigItem(
+			position = 9,
+			keyName = "allowEnchantment",
+			name = "Allow Enchantment Spells",
+			description = "Allowed enchantment spells to be cast for all classes.",
+			section = overrides
+	)
+	default boolean allowEnchantment(){ return false; }
 
 }
