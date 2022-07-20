@@ -64,6 +64,12 @@ public class ClassesOfGielinorPlugin extends Plugin
 		[x]][1..n] - n will be an entry in to the array for items names, and will go from 1-n
 		Each class will have 20 available "valid item" slots which can be changed in the code.
 	 */
+	public String[][] questItems = new String[128][2];
+	/* Array Structure:
+		[x][0] = Name of Item
+		[x][1] = Name of Quest
+	 */
+
 	public String[] toolItems = new String[9];
 	public String[][] classDialogue = new String[21][21]; //Contains response dialogue for each class.
 	public String[][] worldAltars = new String[56][3]; //First number is dictated by how many altars there are in OSRS (listed here: https://oldschool.runescape.wiki/w/Altar)
@@ -114,8 +120,11 @@ public class ClassesOfGielinorPlugin extends Plugin
 			String deitylist = setReligion(config.playerAlignment().toString());
 			setGods(deitylist);
 			setAltars();
+
+			//Set item arrays
 			setClassPermanentItems(config.playerClass().toString());
 			setToolItems();
+			setQuestItems();
 			return;
 		}
 	}
@@ -191,6 +200,140 @@ public class ClassesOfGielinorPlugin extends Plugin
 		toolItems[8] = "Teasing stick";
 	}
 
+	private void setQuestItems()
+	{
+		questItems[0][0] = "Ogre bellows";
+		questItems[1][0] = "Spiked boots";
+		questItems[2][0] = "Trowel";
+		questItems[3][0] = "Battered book";
+		questItems[4][0] = "Battered key";
+		questItems[5][0] = "Fake beard";
+		questItems[6][0] = "Red hot sauce";
+		questItems[7][0] = "Red vine worm";
+		questItems[8][0] = "Dramen branch";
+		questItems[9][0] = "Redberry pie";
+		questItems[10][0] = "Black mushroom";
+		questItems[11][0] = "Strange implement";
+		questItems[12][0] = "Black mushroom ink";
+		questItems[13][0] = "Dramen branch";
+		questItems[14][0] = "Karamjan rum";
+		questItems[15][0] = "Hangover cure";
+		questItems[16][0] = "Ghostspeak amulet";
+		questItems[17][0] = "Broken glass";
+		questItems[18][0] = "Rogue's purse";
+		questItems[19][0] = "Glarial's pebble";
+		questItems[20][0] = "A key";
+		questItems[21][0] = "Glarial's amulet";
+		questItems[22][0] = "Door key";
+		questItems[23][0] = "H.A.M. robes";
+		questItems[24][0] = "Fuse";
+		questItems[25][0] = "Commorb";
+		questItems[26][0] = "Goutweed";
+		questItems[27][0] = "Storeroom key";
+		questItems[28][0] = "Seal of passage";
+		questItems[29][0] = "Nettle tea";
+		questItems[30][0] = "Ice gloves";
+		questItems[31][0] = "Airtight pot";
+		questItems[32][0] = "Animate rock scroll";
+		questItems[33][0] = "M'speak amulet";
+		questItems[34][0] = "Monkey greegree";
+		questItems[35][0] = "Barrel of naphtha";
+		questItems[36][0] = "Barrel of coal-tar";
+		questItems[37][0] = "Barrel";
+		questItems[38][0] = "Ogre bow";
+		questItems[39][0] = "Silverlight";
+		questItems[40][0] = "Catspeak amulet";
+		questItems[41][0] = "Silver sickle (b)";
+		questItems[42][0] = "Mourner gear";
+		questItems[43][0] = "Excalibur";
+		questItems[44][0] = "Dramen staff";
+		questItems[45][0] = "Snake charm";
+		questItems[46][0] = "Ugthanki dung";
+		questItems[47][0] = "Enchanted lyre";
+		questItems[48][0] = "Snake charm";
+		questItems[49][0] = "Ring of visibility";
+		questItems[50][0] = "Gnome amulet";
+		questItems[51][0] = "Crystal-mine key";
+		questItems[52][0] = "Blurite ore";
+		questItems[53][0] = "Beaten book";
+		questItems[54][0] = "Dwarven helmet";
+		questItems[55][0] = "Klank's gauntlets";
+		questItems[56][0] = "Crystal bow/shield";
+		questItems[57][0] = "Brooch";
+		questItems[58][0] = "Ring of charos (a)";
+		questItems[59][0] = "Lunar staff";
+		questItems[60][0] = "Kitten";
+		questItems[61][0] = "Eagle cape";
+		questItems[62][0] = "Fake beak";
+		questItems[63][0] = "Camel mask";
+		questItems[64][0] = "Bomber jacket";
+		questItems[65][0] = "Bomber cap";
+		questItems[66][0] = "Origami balloon";
+		questItems[67][0] = "'perfect' ring";
+		questItems[68][0] = "'perfect' necklace";
+		questItems[69][0] = "Shoes";
+		questItems[70][0] = "Kharidian headpiece";
+		questItems[71][0] = "Desert disguise";
+		questItems[72][0] = "Khazard armour";
+		questItems[73][0] = "Pet rock";
+		questItems[74][0] = "Fremennik blade";
+		questItems[75][0] = "Hazeel's mark";
+		questItems[76][0] = "Carnillean armour";
+		questItems[77][0] = "Blurite sword";
+		questItems[78][0] = "Hazard suit";
+		questItems[79][0] = "Slave robes";
+		questItems[80][0] = "Builder's outfit";
+		questItems[81][0] = "Golden helmet";
+		questItems[82][0] = "Gadderhammer";
+		questItems[83][0] = "Silvthrill rod";
+		questItems[84][0] = "Rod of ivandis";
+		questItems[85][0] = "Beads of the dead";
+		questItems[86][0] = "Zamorak robes";
+		questItems[87][0] = "Dark dagger";
+		questItems[88][0] = "Crystal pendant";
+		questItems[89][0] = "Fixed device";
+		questItems[90][0] = "Rat pole";
+		questItems[91][0] = "Darklight";
+		questItems[92][0] = "Doctors/nurse hat";
+		questItems[93][0] = "Bedsheet";
+		questItems[94][0] = "Initiate sallet";
+		questItems[95][0] = "Lunar armour/gear";
+		questItems[96][0] = "Camulet";
+		questItems[97][0] = "Crystal seed";
+		questItems[98][0] = "Crystal trinket";
+		questItems[99][0] = "Fishing pass";
+		questItems[100][0] = "Blessed gold bowl";
+		questItems[101][0] = "Mouse toy";
+		questItems[102][0] = "Prayer book";
+		questItems[103][0] = "Wrought iron key";
+		questItems[104][0] = "Beacon ring";
+		questItems[105][0] = "Dwarven rock cake";
+		questItems[106][0] = "Barrows gloves";
+		questItems[107][0] = "Locating crystal";
+		questItems[108][0] = "Bervirius notes";
+		questItems[109][0] = "Black prism";
+		questItems[110][0] = "Ammo mould";
+		questItems[111][0] = "Steel gauntlets";
+		questItems[112][0] = "Blackjack";
+		questItems[113][0] = "Magic secateurs";
+		questItems[114][0] = "Karambwan vessel";
+		questItems[115][0] = "Steel key ring";
+		questItems[116][0] = "Ectophial";
+		questItems[117][0] = "Teleport crystal";
+		questItems[118][0] = "Book o' piracy";
+		questItems[119][0] = "Sled";
+		questItems[120][0] = "Armadyl pendant";
+		questItems[121][0] = "Ancient mace";
+		questItems[122][0] = "Bull roarer";
+		questItems[123][0] = "Holy wrench";
+		questItems[124][0] = "Ava's device";
+		questItems[125][0] = "Iban's staff";
+		questItems[126][0] = "Keris";
+		questItems[127][0] = "Barrelchest anchor";
+		questItems[128][0] = "Ring of charos";
+		questItems[129][0] = "Nulodion's notes";
+	}
+
 	private boolean compareToTools(String currentItem)
 	{
 		int i;
@@ -220,6 +363,36 @@ public class ClassesOfGielinorPlugin extends Plugin
 			return false;
 		}
 
+	}
+
+	private boolean compareToQuestItems(String currentItem)
+	{
+		int i;
+		int FoundFlag = 0;
+		String ArrayItem;
+		currentItem = currentItem.toUpperCase();
+
+		while(FoundFlag <= 0)
+		{
+			for(i=0; i < questItems.length; i++)
+			{
+				ArrayItem = questItems[i][0].toUpperCase();
+				if(ArrayItem.contains(currentItem))
+				{
+					FoundFlag = 1;
+				}
+			}
+			FoundFlag = 2;
+		}
+
+		if (FoundFlag == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	private boolean compareToItemArrays(String entity, String[][] setArray)
@@ -781,8 +954,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][4] = "hammer";
 				validClassItems[classID][5] = "knife";
 				validClassItems[classID][6] = "knives";
-				validClassItems[classID][7] = "----";
-				validClassItems[classID][8] = "----";
+				validClassItems[classID][7] = " axe";
+				validClassItems[classID][8] = "Colossal blade";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
@@ -1411,7 +1584,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		{
 			String itemName = getCurrentItemName(event);
 
-			if(compareToItemArrays(itemName,validClassItems) || compareToTools(itemName) || config.enableNonClassItems())
+			if(compareToItemArrays(itemName,validClassItems) || compareToTools(itemName) || compareToQuestItems(itemName) || config.enableNonClassItems())
 			{
 				//Do nothing, item is allowed for character's class
 			}
