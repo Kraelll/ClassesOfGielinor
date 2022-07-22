@@ -110,13 +110,15 @@ public interface ClassesOfGielinorConfig extends Config
 	)
 	default boolean disablePermItems(){ return false; }
 
+	default boolean allowEnchantment(){ return false; }
+
 	@ConfigItem(
 			position = 9,
-			keyName = "allowEnchantment",
-			name = "Allow Enchantment Spells",
-			description = "Allowed enchantment spells to be cast for all classes.",
+			keyName = "allowProtectPrayers",
+			name = "Allow Protection Prayers",
+			description = "Allows the use of Protection Prayers for all classes.",
 			section = overrides
 	)
-	default boolean allowEnchantment(){ return false; }
+	default boolean allowProtectPrayers(){ return false; }
 
 }

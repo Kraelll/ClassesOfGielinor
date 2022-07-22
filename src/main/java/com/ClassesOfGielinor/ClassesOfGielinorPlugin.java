@@ -55,6 +55,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 	public String classDeity = "";
 	public int PrevClass = 0;
 	public String PrevAlign = "";
+	String msgStr = "";
 
 	//Arrays
 	public String[][] validClassItems = new String[21][21];
@@ -70,7 +71,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 		[x][1] = Name of Quest
 	 */
 
-	public String[] toolItems = new String[9];
 	public String[][] classDialogue = new String[21][21]; //Contains response dialogue for each class.
 	public String[][] worldAltars = new String[56][3]; //First number is dictated by how many altars there are in OSRS (listed here: https://oldschool.runescape.wiki/w/Altar)
 	/* Array Structure:
@@ -123,7 +123,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 			//Set item arrays
 			setClassPermanentItems(config.playerClass().toString());
-			setToolItems();
 			setQuestItems();
 			return;
 		}
@@ -145,7 +144,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		setClassPermanentItems(currentClass);
 		setClassDialogue(currentClass);
 
-		String msgStr = "";
+		msgStr = "";
 
 		if (PrevClass != getClassID(currentClass))  		//This prevents the updater spamming the chat.
 		{
@@ -180,24 +179,11 @@ public class ClassesOfGielinorPlugin extends Plugin
 			}
 			else
 			{
-				msgStr = "There are no Gods supporting you.";
+				msgStr = "Your lack of faith prevents you from obtaining blessings.";
 				sendChatMessage(msgStr);
 			}
 		}
 		return;
-	}
-
-	private void setToolItems()
-	{
-		toolItems[0] = "Glassblowing pipe";
-		toolItems[1] = "Secateurs";
-		toolItems[2] = " Rod";
-		toolItems[3] = "Harpoon";
-		toolItems[4] = " Axe";
-		toolItems[5] = "Machete";
-		toolItems[6] = "Pickaxe";
-		toolItems[7] = "Butterfly Net";
-		toolItems[8] = "Teasing stick";
 	}
 
 	private void setQuestItems()
@@ -332,7 +318,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		questItems[126][0] = "Keris";
 		questItems[127][0] = "Barrelchest anchor";
 		questItems[128][0] = "Ring of charos";
-		questItems[129][0] = "Nulodion's notes";
+		questItems[129][0] = "-----";
 
 		//Quest Names
 		questItems[0][1] = "Big Chompy Bird Hunting";
@@ -468,37 +454,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 	}
 
-	private boolean compareToTools(String currentItem)
-	{
-		int i;
-		int FoundFlag = 0;
-		String ArrayItem;
-		currentItem = currentItem.toUpperCase();
-
-		while(FoundFlag <= 0)
-		{
-			for(i=0; i < toolItems.length; i++)
-			{
-				ArrayItem = toolItems[i].toUpperCase();
-				if(ArrayItem.contains(currentItem))
-				{
-					FoundFlag = 1;
-				}
-			}
-			FoundFlag = 2;
-		}
-
-		if (FoundFlag == 1)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-	}
-
 	private boolean compareToQuestItems(String currentItem)
 	{
 		int i;
@@ -506,20 +461,19 @@ public class ClassesOfGielinorPlugin extends Plugin
 		String ArrayItem;
 		currentItem = currentItem.toUpperCase();
 
-		while(FoundFlag <= 0)
+
+
+		for(i=0; i < questItems.length; i++)
 		{
-			for(i=0; i < questItems.length; i++)
+			ArrayItem = questItems[i][0].toUpperCase();
+			if(ArrayItem.contains(currentItem))
 			{
-				ArrayItem = questItems[i][0].toUpperCase();
-				if(ArrayItem.contains(currentItem))
-				{
-					FoundFlag = 1;
-				}
+				FoundFlag = 1;
 			}
-			FoundFlag = 2;
 		}
 
-		if (FoundFlag == 1)
+
+		if (FoundFlag > 0)
 		{
 			return true;
 		}
@@ -557,6 +511,35 @@ public class ClassesOfGielinorPlugin extends Plugin
 		}
 
 		if(FoundFlag == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	private boolean checkAllowedItemsArray(String entity)
+	{
+		int classID = getClassID(config.playerClass().toString());
+		int found = 0;
+		entity = entity.toUpperCase();
+
+		for(int counter = 1; counter < validClassItems.length; counter++)
+		{
+			String currentArrayItem = validClassItems[classID][counter].toUpperCase();
+			if(entity.contains(currentArrayItem) || currentArrayItem == "!ALL!")
+			{
+				found = 1;
+			}
+			else
+			{
+				//Do nothing
+			}
+		}
+
+		if(found > 0)
 		{
 			return true;
 		}
@@ -699,7 +682,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 
 	private void commitToFaith()
 	{
-		String msgStr = "You feel the approval of ";
+		msgStr = "You feel the approval of ";
 		for(int i = 0; i < playerDeities.length; i++)
 		{
 			if(playerDeities[i] == "")
@@ -1090,8 +1073,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][6] = "knives";
 				validClassItems[classID][7] = " axe";
 				validClassItems[classID][8] = "Colossal blade";
-				validClassItems[classID][9] = "----";
-				validClassItems[classID][10] = "----";
+				validClassItems[classID][9] = "Glassblowing pipe";
+				validClassItems[classID][10] = "Pickaxe";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -1126,7 +1109,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][15] = "Candy cane";
 				validClassItems[classID][16] = "scimitar";
 				validClassItems[classID][17] = "shield";
-				validClassItems[classID][18] = "----";
+				validClassItems[classID][18] = "harpoon";
 				validClassItems[classID][19] = "----";
 				validClassItems[classID][20] = "----";
 				break;
@@ -1198,11 +1181,11 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][6] = "Chinchompa";
 				validClassItems[classID][7] = "crossbow";
 				validClassItems[classID][8] = "knife";
-				validClassItems[classID][9] = "----";
-				validClassItems[classID][10] = "----";
-				validClassItems[classID][11] = "----";
-				validClassItems[classID][12] = "----";
-				validClassItems[classID][13] = "----";
+				validClassItems[classID][9] = "Teasing stick";
+				validClassItems[classID][10] = "Machete";
+				validClassItems[classID][11] = "Butterfly Net";
+				validClassItems[classID][12] = "Harpoon";
+				validClassItems[classID][13] = " axe";
 				validClassItems[classID][14] = "----";
 				validClassItems[classID][15] = "----";
 				validClassItems[classID][16] = "----";
@@ -1258,9 +1241,9 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][13] = " longsword";
 				validClassItems[classID][14] = "shield";
 				validClassItems[classID][15] = "light"; //All variations of Silverlight
-				validClassItems[classID][16] = "----";
-				validClassItems[classID][17] = "----";
-				validClassItems[classID][18] = "----";
+				validClassItems[classID][16] = "silverlight";
+				validClassItems[classID][17] = "darklight";
+				validClassItems[classID][18] = "arclight";
 				validClassItems[classID][19] = "----";
 				validClassItems[classID][20] = "----";
 				break;
@@ -1278,8 +1261,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][6] = "javelin";
 				validClassItems[classID][7] = "club";
 				validClassItems[classID][8] = "maul";
-				validClassItems[classID][9] = "----";
-				validClassItems[classID][10] = "----";
+				validClassItems[classID][9] = "Machete";
+				validClassItems[classID][10] = "Pickaxe";
 				validClassItems[classID][11] = "----";
 				validClassItems[classID][12] = "----";
 				validClassItems[classID][13] = "----";
@@ -1329,8 +1312,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "Guthix";
 				validClassItems[classID][4] = "sickle";
 				validClassItems[classID][5] = "dagger";
-				validClassItems[classID][6] = "----";
-				validClassItems[classID][7] = "----";
+				validClassItems[classID][6] = "Butterfly Net";
+				validClassItems[classID][7] = " axe";
 				validClassItems[classID][8] = "----";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";
@@ -1363,8 +1346,8 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][10] = " sword";
 				validClassItems[classID][11] = "shield";
 				validClassItems[classID][12] = "defender";
-				validClassItems[classID][13] = "----";
-				validClassItems[classID][14] = "----";
+				validClassItems[classID][13] = "silverlight";
+				validClassItems[classID][14] = "darklight";
 				validClassItems[classID][15] = "----";
 				validClassItems[classID][16] = "----";
 				validClassItems[classID][17] = "----";
@@ -1437,9 +1420,9 @@ public class ClassesOfGielinorPlugin extends Plugin
 				validClassItems[classID][3] = "blessing";
 				validClassItems[classID][4] = "tome";
 				validClassItems[classID][5] = "book of";
-				validClassItems[classID][6] = "----";
-				validClassItems[classID][7] = "----";
-				validClassItems[classID][8] = "----";
+				validClassItems[classID][6] = "silverlight";
+				validClassItems[classID][7] = "darklight";
+				validClassItems[classID][8] = "arclight";
 				validClassItems[classID][9] = "----";
 				validClassItems[classID][10] = "----";
 				validClassItems[classID][11] = "----";
@@ -1650,8 +1633,13 @@ public class ClassesOfGielinorPlugin extends Plugin
 		//Detect the name of the item that was just clicked on
 		//Many thanks to the ItemStats plugin for pointing me in the right direction with the ItemComposition class.
 
-		ItemComposition currentItem = itemManager.getItemComposition(event.getId());
+		ItemComposition currentItem = itemManager.getItemComposition(event.getItemId());
 		String itemName = currentItem.getName();
+
+		//Used for debugging:
+		//String itemID = String.valueOf(currentItem.getId());
+		//msgStr = "You clicked: " + itemName + " (" + itemID + ")";
+		//sendChatMessage(msgStr);
 		return itemName;
 	}
 
@@ -1682,18 +1670,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked event)
 	{
-		/* A lot of thanks to Spedwards for the code here. Without their Group Iron Man source code I would never have
-		   figured out how to program this kind of method myself.
-
-		   This method intercepts each action made against an entity and compares it to a list of events. I used this
-		   to determine if the action being made is something that could be restricted; such as spells being cast, prayers
-		   being used, and items being equipped.
-
-		   Typically this method could be quite large if the plugin evolves to inspect a lot more actions, but generally
-		   it should be reasonably low impact. It will also consume the action if deemed restricted, meaning the action will
-		   not be taken in to account.
-		*/
-
 		String target = Text.removeTags(event.getMenuTarget());
 
 		//Spell Cast Observer
@@ -1718,40 +1694,53 @@ public class ClassesOfGielinorPlugin extends Plugin
 		{
 			String itemName = getCurrentItemName(event);
 
-			if(compareToItemArrays(itemName,validClassItems) || compareToTools(itemName) || compareToQuestItems(itemName) || config.enableNonClassItems())
+			if(checkAllowedItemsArray(itemName) || config.enableNonClassItems())
 			{
 				//Do nothing, item is allowed for character's class
+
 			}
-			else{
-				//Consume the click as they cannot use that item
+			else
+			{
 				event.consume();
-				String msgStr = "As a " + config.playerClass().toString() + " you cannot wield the " + itemName + ".";
+				msgStr = "As a " + config.playerClass().toString() + " you cannot wield the " + itemName + ".";
 				sendChatMessage(msgStr);
 			}
 			return;
-
 		}
 
 		//Prayer Activation Observer
 		if ((entryMatches(event,"Activate")))
 		{
+			//Get prayer name
+			String prayerName = event.getMenuTarget();
+			msgStr = prayerName + "clicked";
+			sendChatMessage(msgStr);
+
 			if(prayerAllowed || config.forceAllowPrayer())
 			{
 				//Do nothing, character's class is permitted to use prayer
+
 			}
 			else
 			{
-				//Prayer has been disabled for the player
-				event.consume();
-				String msgStr = "Why would a " + config.playerClass().toString() + " pray to the Gods? I'll pass.";
-				sendChatMessage(msgStr);
+				if(prayerName.contains("Protect from") && config.allowProtectPrayers())
+				{
+					//Allow protection prayers is enabled. Permit use of these prayers.
+				}
+				else
+				{
+					//Prayer has been disabled for the player
+					event.consume();
+					msgStr = "Why would a " + config.playerClass().toString() + " pray to the Gods? I'll pass.";
+					sendChatMessage(msgStr);
+				}
 			}
 		}
 
 		//Praying at Altars Observer
 		if ((entryMatches(event,"Pray-at")) || (entryMatches(event,"Pray")))
 		{
-			String msgStr = "";
+			msgStr = "";
 
 			//Get Player's co-ordinates
 			WorldPoint currentCoords = client.getLocalPlayer().getWorldLocation();
@@ -1809,6 +1798,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 					//God found: player can pray at this altar
 					msgStr = "You feel the embrace of " + altarDiety + " as you approach the altar.";
 					sendChatMessage(msgStr);
+
 				}
 				else
 				{
@@ -1816,6 +1806,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 					event.consume();
 					msgStr = "You feel nothing. You do not have the blessing of " + altarDiety;
 					sendChatMessage(msgStr);
+
 				}
 			}
 		}
