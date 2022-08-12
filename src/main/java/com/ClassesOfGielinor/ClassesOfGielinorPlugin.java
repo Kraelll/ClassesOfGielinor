@@ -1643,6 +1643,7 @@ public class ClassesOfGielinorPlugin extends Plugin
 		return itemName;
 	}
 
+
 	private boolean entryMatches(MenuOptionClicked entry, String option)
 	{
 		return entry.getMenuOption().equals(option);
@@ -1713,8 +1714,6 @@ public class ClassesOfGielinorPlugin extends Plugin
 		{
 			//Get prayer name
 			String prayerName = event.getMenuTarget();
-			msgStr = prayerName + "clicked";
-			sendChatMessage(msgStr);
 
 			if(prayerAllowed || config.forceAllowPrayer())
 			{
